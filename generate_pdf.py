@@ -122,7 +122,7 @@ html_content = """<!DOCTYPE html>
   </tr>
   <tr>
     <td class="td-label">Replit app link (anyone can open)</td>
-    <td>https://liteage-focus.replit.app <em>(GitHub repository: https://github.com/TSGaming6239/liteage-focus)</em></td>
+    <td>https://replit.com/@liteage/liteage-focus <em>(Live production app: https://tsgaming6239.github.io/liteage-focus)</em></td>
   </tr>
   <tr>
     <td class="td-label">The problem it solves (one line from your Week 1 brief)</td>

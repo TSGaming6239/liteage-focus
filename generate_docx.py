@@ -60,7 +60,7 @@ def create_docx(doc_path):
         ("Full name", "Shivendra Kumar Sharma"),
         ("Registered email", "tech.stud.gaming2011@gmail.com"),
         ("App name", "Liteage Focus"),
-        ("Replit app link (anyone can open)", "https://liteage-focus.replit.app (GitHub repository: https://github.com/TSGaming6239/liteage-focus)"),
+        ("Replit app link (anyone can open)", "https://replit.com/@liteage/liteage-focus (Live app: https://tsgaming6239.github.io/liteage-focus)"),
         ("The problem it solves (one line from your Week 1 brief)", "Students struggle to find suitable digital solutions for study and productivity problems because resources are scattered, some tools do not fit their devices or routines, and useful features may be paid.")
     ]
     
