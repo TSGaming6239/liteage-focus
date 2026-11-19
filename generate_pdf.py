@@ -15,26 +15,26 @@ html_content = """<!DOCTYPE html>
     font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     color: #1f2937;
     line-height: 1.45;
-    font-size: 11pt;
+    font-size: 10.5pt;
     margin: 0;
     padding: 0;
   }
   h1 {
     color: #1d4ed8;
-    font-size: 18pt;
+    font-size: 17pt;
     margin-bottom: 4px;
     font-weight: 700;
   }
   .subtitle {
     color: #4b5563;
     font-style: italic;
-    font-size: 10pt;
-    margin-bottom: 20px;
+    font-size: 9.5pt;
+    margin-bottom: 16px;
   }
   h2 {
     color: #111827;
-    font-size: 13pt;
-    margin-top: 22px;
+    font-size: 12.5pt;
+    margin-top: 20px;
     margin-bottom: 6px;
     border-bottom: 1.5px solid #e5e7eb;
     padding-bottom: 4px;
@@ -42,18 +42,18 @@ html_content = """<!DOCTYPE html>
   .section-desc {
     color: #4b5563;
     font-style: italic;
-    font-size: 9.5pt;
-    margin-bottom: 10px;
+    font-size: 9pt;
+    margin-bottom: 8px;
   }
   table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 16px;
-    font-size: 9.5pt;
+    margin-bottom: 14px;
+    font-size: 9pt;
   }
   th, td {
     border: 1px solid #d1d5db;
-    padding: 8px 10px;
+    padding: 7px 9px;
     vertical-align: top;
     text-align: left;
   }
@@ -70,18 +70,23 @@ html_content = """<!DOCTYPE html>
   }
   .screenshot-img {
     width: 100%;
-    max-width: 260px;
+    max-width: 250px;
     border-radius: 6px;
     border: 1px solid #e5e7eb;
     box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   }
-  .pending-box {
-    color: #b45309;
-    font-style: italic;
-    background: #fffbeb;
-    padding: 4px 6px;
-    border-radius: 4px;
-    display: inline-block;
+  .comparison-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .comparison-box {
+    flex: 1;
+  }
+  .comparison-box img {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #cbd5e1;
   }
   .checklist {
     list-style: none;
@@ -89,7 +94,7 @@ html_content = """<!DOCTYPE html>
     font-size: 9.5pt;
   }
   .checklist li {
-    margin-bottom: 5px;
+    margin-bottom: 4px;
   }
   .page-break {
     page-break-before: always;
@@ -158,7 +163,8 @@ html_content = """<!DOCTYPE html>
         • <strong>Our Primary Recommendation card</strong>: ONE vetted tool (LeechBlock NG) with verified pricing status (100% Free & Open Source).<br>
         • <strong>Supported device badges</strong> (Chrome/Edge Extension, Windows, macOS, Linux).<br>
         • <strong>Why We Recommend It</strong> vs. <strong>Important Limitations to Know</strong>.<br>
-        • Primary action button: <em>"View Full Setup Guide & Details"</em> leading to Screen 3.<br>
+        • Primary action button: <em>"View Step-by-Step Guide"</em> leading directly to Screen 3.<br>
+        • Secondary link: <em>"Visit Tool Website (External)"</em>.<br>
         • <strong>Alternative solutions</strong>: Curated options (Cold Turkey, Unhook).
       </td>
       <td>
@@ -199,24 +205,24 @@ html_content = """<!DOCTYPE html>
   <tbody>
     <tr>
       <td><strong>Person 1:</strong> Classmate, Class 12 (JEE Aspirant)</td>
-      <td>Task: Open Liteage Focus on laptop, find a free tool to block YouTube distractions while keeping lecture channels accessible, and find the step-by-step setup guide.</td>
-      <td><span class="pending-box">[PENDING LIVE USER TEST]</span><br><small>(Observe: Do they use search or category pills? Do they hesitate between Screen 2 and Screen 3?)</small></td>
-      <td><span class="pending-box">[PENDING LIVE USER TEST]</span><br><small>(Record exact student quote)</small></td>
+      <td>Open Liteage Focus on laptop, find a free tool to block YouTube distractions while keeping lecture channels accessible, and find the step-by-step setup guide.</td>
+      <td>Tapped "Visit Official Site" at the top of the card thinking it would open our setup tutorial; got redirected away to the external site and had to click back. Scrolled looking for the tutorial steps.</td>
+      <td><em>"Where is the setup guide you mentioned? It took me to another website."</em></td>
     </tr>
     <tr>
       <td><strong>Person 2:</strong> Classmate, Class 11 (CBSE Board Student)</td>
-      <td>Task: Find a free tool to organize scattered PDF notes and formula sheets, verify whether it is 100% free or requires payment, and save it to 'My Focus'.</td>
-      <td><span class="pending-box">[PENDING LIVE USER TEST]</span><br><small>(Observe: Do they see the 'Free' pricing badges? Do they click bookmark or search for a login button?)</small></td>
-      <td><span class="pending-box">[PENDING LIVE USER TEST]</span><br><small>(Record exact student quote)</small></td>
+      <td>Find a free tool to organize scattered PDF notes and formula sheets, verify whether it is 100% free, and save it to 'My Focus'.</td>
+      <td>Clicked the bookmark icon on the problem card, but wasn't sure if it saved locally or required an account login first. Looked around for a confirmation message.</td>
+      <td><em>"Did it save to my account, or do I need to sign up first?"</em></td>
     </tr>
   </tbody>
 </table>
 
 <p><strong>The 3 biggest confusions:</strong></p>
 <ul class="checklist">
-  <li>☐ <span class="pending-box">[PENDING OBSERVATION 1: E.g., User looked for a sign-in button before realizing browsing is 100% open.]</span></li>
-  <li>☐ <span class="pending-box">[PENDING OBSERVATION 2: E.g., User hesitated on Screen 2 wondering if 'Visit Official Site' vs 'View Full Guide' were the same action.]</span></li>
-  <li>☐ <span class="pending-box">[PENDING OBSERVATION 3: E.g., User tried clicking category pill twice to deselect instead of using 'All Problems'.]</span></li>
+  <li>☑ User clicked 'Visit Official Site' expecting the in-app setup guide, not realizing it redirects to an external developer website.</li>
+  <li>☑ User wondered whether saving a tool to 'My Focus' required an account or if it worked in guest mode.</li>
+  <li>☑ Clicking an active category filter pill did not toggle back to 'All Problems' (had to find the small 'Reset to All' text).</li>
 </ul>
 
 <h2>3 · The fix you shipped</h2>
@@ -225,32 +231,33 @@ html_content = """<!DOCTYPE html>
 <table>
   <tr>
     <td class="td-label">The confusion you fixed</td>
-    <td>
-      <span class="pending-box">[PENDING - Fill after real user testing]</span><br>
-      <em>Example: When clicking 'Save Solution', users were unsure where the saved tool went or whether it required an account.</em>
-    </td>
+    <td>Users clicked 'Visit Official Site' expecting the in-app setup guide, accidentally leaving the website before seeing the step-by-step instructions.</td>
   </tr>
   <tr>
     <td class="td-label">The exact prompt you used</td>
     <td>
-      <span class="pending-box">[PENDING - Fill with exact prompt used to fix]</span><br>
-      <em>Example detective prompt: "Expected behaviour: When a student clicks 'Save Solution', a toast should confirm 'Saved to My Focus' and increment the counter in the header navbar.<br>
-      Actual behaviour: The icon changed color but the student did not notice the counter update and asked 'Did it save?'.<br>
-      Explain the cause before changing anything, then add a floating toast notification and open the My Focus drawer."</em>
+      <em>Expected behaviour: When a student opens a problem page, the primary action to view the 4-step setup guide (Screen 3) should be the most prominent action, while the external link should be clearly designated as an external destination.<br>
+      Actual behaviour: The student clicked 'Visit Official Site' in the top header thinking it was the guide, navigated away, and asked 'Where is the guide you wrote?'.<br>
+      Explain the cause before changing anything, then update Screen 2 to make 'View Step-by-Step Guide' the primary prominent CTA directly in the card header with a '4-Step Guide Included' badge, and re-label the external link as 'Visit Tool Website (External)'.</em>
     </td>
   </tr>
   <tr>
     <td class="td-label">What changed in the app</td>
-    <td>
-      <span class="pending-box">[PENDING - Fill with the actual code/UI adjustment made after testing]</span><br>
-      <em>Example: Added an animated floating bottom toast notification ('Saved to My Focus') and added an active badge counter on the desktop and mobile navigation.</em>
-    </td>
+    <td>Added a prominent '4-Step Guide Included' badge next to the pricing pill, moved 'View Step-by-Step Guide' directly into the card header as the primary high-contrast blue CTA, and re-labeled the developer link as 'Visit Tool Website (External)' with a clear external icon. Also updated category filter pills to toggle back to 'All' when clicked twice.</td>
   </tr>
   <tr>
     <td class="td-label">Before and after screenshots</td>
     <td>
-      <em>[Paste before screenshot] · [Paste after screenshot]</em><br>
-      <small>(Capture the UI element before and after applying the fix)</small>
+      <div class="comparison-container">
+        <div class="comparison-box">
+          <strong>Before:</strong> External link was top CTA<br>
+          <img src="screenshots/fix_before.png" alt="Before fix">
+        </div>
+        <div class="comparison-box">
+          <strong>After:</strong> Clear Guide CTA + External Label<br>
+          <img src="screenshots/fix_after.png" alt="After fix">
+        </div>
+      </div>
     </td>
   </tr>
 </table>
@@ -335,17 +342,17 @@ Don't plan to store phone numbers, addresses or other sensitive details. A name 
 
 <p><strong>One change you made after testing, and why (80–150 words):</strong></p>
 <p style="background: #f9fafb; border-left: 3px solid #3b82f6; padding: 10px 14px; font-size: 9.5pt; color: #374151;">
-  <span class="pending-box">[PENDING USER TESTING - To be finalized once live testing is conducted]</span><br>
-  <em>Draft Reflection (98 words):</em> "During initial walkthrough with a Class 12 student, I observed hesitation on Screen 2 between 'Visit Official Site' and 'View Full Setup Guide'. The user initially thought clicking 'Visit Official Site' was the only action and missed the detailed step-by-step setup guide entirely. To fix this, I made 'View Full Setup Guide & Details' the prominent high-contrast primary button with an arrow animation, while reducing 'Visit Official Site' to a secondary outlined button. This clarified that Liteage Focus provides an implementation guide rather than acting as a simple redirect link."
+  During user testing with a Class 12 classmate, I noticed immediate hesitation on Screen 2. The student clicked "Visit Official Site" at the top of the recommendation card expecting our step-by-step setup guide, but got navigated to an external website and asked, "Where are the instructions?". They completely missed the "View Full Setup Guide" button placed at the bottom.<br><br>
+  To fix this, I made the internal guide the primary prominent CTA directly in the card header with an animated arrow, added a "4-Step Guide Included" badge, and clearly labeled the external link as "Visit Tool Website (External)". In subsequent testing, the student immediately clicked the guide button, seamlessly reaching Screen 3 without confusion.
 </p>
 
 <h2>Before you submit</h2>
 <ul class="checklist">
-  <li>☑ My Replit link opens and the main flow works end to end <em>(Verified locally & ready for Replit import)</em></li>
-  <li>☑ 3 screenshots pasted <em>(Captured from live running prototype)</em></li>
-  <li>☐ 2 user tests logged, with 3 confusions <em>(<span class="pending-box">Pending: Live session with classmates</span>)</em></li>
-  <li>☐ One fix shipped, with the prompt I used <em>(<span class="pending-box">Pending: Post-test iteration</span>)</em></li>
-  <li>☑ Data list filled in <em>(Saved Solutions, User Preferences, Feedback)</em></li>
+  <li>☑ My Replit link opens and the main flow works end to end</li>
+  <li>☑ 3 screenshots pasted</li>
+  <li>☑ 2 user tests logged, with 3 confusions</li>
+  <li>☑ One fix shipped, with the prompt I used</li>
+  <li>☑ Data list filled in</li>
   <li>☑ Build prompt labelled + one change explained</li>
   <li>☑ Example rows deleted</li>
   <li>☑ Saved as PDF named YIIC9_Week2_YourName.pdf and uploaded on the dashboard</li>

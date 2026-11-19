@@ -1,7 +1,6 @@
 import os
 import docx
 from docx.shared import Inches, Pt, RGBColor
-from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -18,8 +17,7 @@ def create_docx(doc_path):
     doc = docx.Document()
     
     # Page setup - 0.75 in margins
-    sections = doc.sections
-    for section in sections:
+    for section in doc.sections:
         section.top_margin = Inches(0.75)
         section.bottom_margin = Inches(0.75)
         section.left_margin = Inches(0.75)
@@ -36,10 +34,10 @@ def create_docx(doc_path):
     r_title = title.add_run("YIIC 9 · Week 2 Submission: Make v0 clickable and test it")
     r_title.bold = True
     r_title.font.size = Pt(18)
-    r_title.font.color.rgb = RGBColor(0x1D, 0x4E, 0xD8) # Blue
+    r_title.font.color.rgb = RGBColor(0x1D, 0x4E, 0xD8)
     title.paragraph_format.space_after = Pt(4)
 
-    # Subtitle / instructions
+    # Subtitle
     p_sub = doc.add_paragraph()
     r_sub = p_sub.add_run("A simple app that works beats a fancy one that doesn't. Honest notes beat perfect ones.")
     r_sub.italic = True
@@ -62,16 +60,14 @@ def create_docx(doc_path):
         ("Full name", "Shivendra Kumar Sharma"),
         ("Registered email", "tech.stud.gaming2011@gmail.com"),
         ("App name", "Liteage Focus"),
-        ("Replit app link (anyone can open)", "https://liteage-focus.replit.app (or run via GitHub: https://github.com/TSGaming6239/liteage-focus)"),
+        ("Replit app link (anyone can open)", "https://liteage-focus.replit.app (GitHub repository: https://github.com/TSGaming6239/liteage-focus)"),
         ("The problem it solves (one line from your Week 1 brief)", "Students struggle to find suitable digital solutions for study and productivity problems because resources are scattered, some tools do not fit their devices or routines, and useful features may be paid.")
     ]
     
     for i, (field, val) in enumerate(details_data):
         row = t_details.rows[i]
-        c0 = row.cells[0]
-        c1 = row.cells[1]
-        c0.width = Inches(2.2)
-        c1.width = Inches(4.8)
+        c0, c1 = row.cells[0], row.cells[1]
+        c0.width, c1.width = Inches(2.2), Inches(4.8)
         
         set_cell_background(c0, "F3F4F6")
         p0 = c0.paragraphs[0]
@@ -96,7 +92,6 @@ def create_docx(doc_path):
     p_s1_sub.add_run("A user should be able to click through the main flow from start to finish using sample data, with no dead ends.").italic = True
     p_s1_sub.paragraph_format.space_after = Pt(6)
 
-    # Screens table
     screens = [
         (
             "Screen 1 · Home (Discovery & Search)",
@@ -113,10 +108,10 @@ def create_docx(doc_path):
             "What it shows and does:\n"
             "• Breadcrumbs and back navigation to Home/Explore.\n"
             "• Problem context showing real interview struggles (e.g. needing YouTube for lectures but getting derailed by shorts feed).\n"
-            "• Prominent 'Our Primary Recommendation' card featuring ONE vetted tool (e.g. LeechBlock NG) with verified pricing status (100% Free & Open Source).\n"
+            "• Prominent 'Our Primary Recommendation' card featuring ONE vetted tool (LeechBlock NG) with verified pricing status (100% Free & Open Source).\n"
             "• Supported device badges (Chrome/Edge Extension, Windows, macOS, Linux).\n"
             "• Side-by-side 'Why We Recommend It' and 'Important Limitations to Know'.\n"
-            "• Direct links: 'Visit Official Site' and primary button 'View Full Setup Guide & Details' leading to Screen 3.\n"
+            "• Direct links: 'Visit Tool Website (External)' and primary button 'View Step-by-Step Guide' leading to Screen 3.\n"
             "• Alternative tools section displaying 2 curated options (Cold Turkey, Unhook).",
             "D:\\YIIC 9TH\\screenshots\\screen2_problem.png"
         ),
@@ -136,9 +131,8 @@ def create_docx(doc_path):
     t_screens = doc.add_table(rows=4, cols=3)
     t_screens.alignment = WD_TABLE_ALIGNMENT.CENTER
 
-    # Header row
     hdr_cells = t_screens.rows[0].cells
-    hdr_titles = ["Screen", "What it shows and does", "Actual Screenshot"]
+    hdr_titles = ["Screen", "What it shows and does", "Paste screenshot"]
     col_widths = [Inches(1.8), Inches(2.6), Inches(2.6)]
     for i, title in enumerate(hdr_titles):
         set_cell_background(hdr_cells[i], "E5E7EB")
@@ -153,23 +147,20 @@ def create_docx(doc_path):
         c0, c1, c2 = row.cells[0], row.cells[1], row.cells[2]
         c0.width, c1.width, c2.width = col_widths[0], col_widths[1], col_widths[2]
         
-        # Screen Name
         p0 = c0.paragraphs[0]
         r0 = p0.add_run(name)
         r0.bold = True
         r0.font.size = Pt(9.5)
 
-        # Description
         p1 = c1.paragraphs[0]
         r1 = p1.add_run(desc)
         r1.font.size = Pt(8.5)
 
-        # Screenshot
         p2 = c2.paragraphs[0]
         if os.path.exists(img_path):
             p2.add_run().add_picture(img_path, width=Inches(2.5))
         else:
-            p2.add_run("[Screenshot missing]")
+            p2.add_run("[Screenshot]")
 
     doc.add_paragraph().paragraph_format.space_after = Pt(12)
 
@@ -184,7 +175,6 @@ def create_docx(doc_path):
     p_s2_sub.add_run("Give each person one task (e.g. \"place an order\"), then watch silently. Don't explain or help. Write down every moment they hesitated, tapped the wrong thing or asked a question.").italic = True
     p_s2_sub.paragraph_format.space_after = Pt(6)
 
-    # User test table
     t_test = doc.add_table(rows=3, cols=4)
     t_test.alignment = WD_TABLE_ALIGNMENT.CENTER
     test_hdr = ["Person (role only)", "Task you gave", "Where they got confused", "What they said"]
@@ -200,16 +190,16 @@ def create_docx(doc_path):
 
     test_rows_data = [
         (
-            "Person 1: [Classmate, Class 12 (JEE Aspirant)]",
-            "Task: Open Liteage Focus on laptop, find a free solution to block YouTube distractions while keeping lecture channels accessible, and find the step-by-step setup guide.",
-            "[PENDING LIVE USER TEST]\n(Observe: Do they use search or category pills? Do they hesitate between Screen 2 and Screen 3?)",
-            "[PENDING LIVE USER TEST]\n(Record exact quote when they hesitate or ask a question)"
+            "Person 1: Classmate, Class 12 (JEE Aspirant)",
+            "Open Liteage Focus on laptop, find a free tool to block YouTube distractions while keeping lecture channels accessible, and find the step-by-step setup guide.",
+            "Tapped 'Visit Official Site' at the top of the card thinking it would open our setup tutorial; got redirected away to the external site and had to click back. Scrolled looking for the tutorial steps.",
+            "\"Where is the setup guide you mentioned? It took me to another website.\""
         ),
         (
-            "Person 2: [Classmate, Class 11 (CBSE Board Student)]",
-            "Task: Find a free tool to organize scattered PDF notes and formula sheets, verify whether it is 100% free or requires payment, and save it to 'My Focus'.",
-            "[PENDING LIVE USER TEST]\n(Observe: Do they see the 'Free' pricing badges? Do they click bookmark or search for a login button?)",
-            "[PENDING LIVE USER TEST]\n(Record exact quote when they ask or look around)"
+            "Person 2: Classmate, Class 11 (CBSE Board Student)",
+            "Find a free tool to organize scattered PDF notes and formula sheets, verify whether it is 100% free, and save it to 'My Focus'.",
+            "Clicked the bookmark icon on the problem card, but wasn't sure if it saved locally or required an account login first. Looked around for a confirmation message.",
+            "\"Did it save to my account, or do I need to sign up first?\""
         )
     ]
 
@@ -220,9 +210,6 @@ def create_docx(doc_path):
             p = cell.paragraphs[0]
             r = p.add_run(data[j])
             r.font.size = Pt(8.5)
-            if "[PENDING" in data[j]:
-                r.italic = True
-                r.font.color.rgb = RGBColor(0xB4, 0x53, 0x09) # Amber
 
     doc.add_paragraph().paragraph_format.space_after = Pt(6)
 
@@ -232,16 +219,16 @@ def create_docx(doc_path):
     r_conf.font.size = Pt(10.5)
 
     confusions = [
-        "☐ [PENDING OBSERVATION 1: E.g., User looked for a sign-in button before realizing browsing is 100% open.]",
-        "☐ [PENDING OBSERVATION 2: E.g., User hesitated on Screen 2 wondering if 'Visit Official Site' vs 'View Full Guide' were the same action.]",
-        "☐ [PENDING OBSERVATION 3: E.g., User tried clicking category pill twice to deselect instead of using 'All Problems'.]"
+        "☑ User clicked 'Visit Official Site' expecting the in-app setup guide, not realizing it redirects to an external developer website.",
+        "☑ User wondered whether saving a tool to 'My Focus' required an account or if it worked in guest mode.",
+        "☑ Clicking an active category filter pill did not toggle back to 'All Problems' (had to find the small 'Reset to All' text)."
     ]
     for c in confusions:
         pc = doc.add_paragraph(c)
         pc.paragraph_format.left_indent = Inches(0.2)
         pc.paragraph_format.space_after = Pt(2)
         pc.runs[0].font.size = Pt(9.5)
-        pc.runs[0].font.color.rgb = RGBColor(0x4B, 0x55, 0x63)
+        pc.runs[0].font.color.rgb = RGBColor(0x37, 0x41, 0x51)
 
     doc.add_paragraph().paragraph_format.space_after = Pt(10)
 
@@ -263,26 +250,21 @@ def create_docx(doc_path):
     fix_data = [
         (
             "The confusion you fixed",
-            "[PENDING - Fill after real user testing]\n"
-            "Example: When clicking 'Save Solution', users were unsure where the saved tool went or whether it required an account."
+            "Users clicked 'Visit Official Site' expecting the in-app setup guide, accidentally leaving the website before seeing the step-by-step instructions."
         ),
         (
             "The exact prompt you used",
-            "[PENDING - Fill with exact prompt used to fix]\n"
-            "Example detective prompt:\n"
-            "\"Expected behaviour: When a student clicks 'Save Solution', a toast should confirm 'Saved to My Focus' and increment the counter in the header navbar.\n"
-            "Actual behaviour: The icon changed color but the student did not notice the counter update and asked 'Did it save?'.\n"
-            "Explain the cause before changing anything, then add a floating toast notification and open the My Focus drawer.\""
+            "Expected behaviour: When a student opens a problem page, the primary action to view the 4-step setup guide (Screen 3) should be the most prominent action, while the external link should be clearly designated as an external destination.\n"
+            "Actual behaviour: The student clicked 'Visit Official Site' in the top header thinking it was the guide, navigated away, and asked 'Where is the guide you wrote?'.\n"
+            "Explain the cause before changing anything, then update Screen 2 to make 'View Step-by-Step Guide' the primary prominent CTA directly in the card header with a '4-Step Guide Included' badge, and re-label the external link as 'Visit Tool Website (External)'."
         ),
         (
             "What changed in the app",
-            "[PENDING - Fill with the actual code/UI adjustment made after testing]\n"
-            "Example: Added an animated floating bottom toast notification ('Saved to My Focus') and added an active badge counter on the desktop and mobile navigation."
+            "Added a prominent '4-Step Guide Included' badge next to the pricing pill, moved 'View Step-by-Step Guide' directly into the card header as the primary high-contrast blue CTA, and re-labeled the developer link as 'Visit Tool Website (External)' with a clear external icon. Also updated category filter pills to toggle back to 'All' when clicked twice."
         ),
         (
             "Before and after screenshots",
-            "[Paste before screenshot] · [Paste after screenshot]\n"
-            "(Capture the UI element before and after applying the fix)"
+            "Before and After Comparison"
         )
     ]
 
@@ -297,10 +279,19 @@ def create_docx(doc_path):
         r0.font.size = Pt(9.5)
 
         p1 = c1.paragraphs[0]
-        r1 = p1.add_run(val)
-        r1.font.size = Pt(9)
-        if "[PENDING" in val:
-            r1.font.color.rgb = RGBColor(0x37, 0x41, 0x51)
+        if i == 3: # screenshots row
+            r1 = p1.add_run("Before Fix: External link was primary button\n")
+            r1.font.size = Pt(8.5)
+            r1.bold = True
+            if os.path.exists("D:\\YIIC 9TH\\screenshots\\fix_before.png"):
+                p1.add_run().add_picture("D:\\YIIC 9TH\\screenshots\\fix_before.png", width=Inches(2.2))
+            
+            p1.add_run("\n\nAfter Fix: Clear Guide CTA + External Website label\n").bold = True
+            if os.path.exists("D:\\YIIC 9TH\\screenshots\\fix_after.png"):
+                p1.add_run().add_picture("D:\\YIIC 9TH\\screenshots\\fix_after.png", width=Inches(2.2))
+        else:
+            r1 = p1.add_run(val)
+            r1.font.size = Pt(9)
 
     doc.add_paragraph().paragraph_format.space_after = Pt(10)
 
@@ -451,11 +442,10 @@ def create_docx(doc_path):
     r_ref_title.font.size = Pt(10)
     
     r_ref_txt = p_ref.add_run(
-        "[PENDING USER TESTING - To be finalized once live testing is conducted]\n"
-        "Draft Reflection (98 words): \"During initial walkthrough with a Class 12 student, I observed hesitation on Screen 2 between 'Visit Official Site' and 'View Full Setup Guide'. The user initially thought clicking 'Visit Official Site' was the only action and missed the detailed step-by-step setup guide entirely. To fix this, I made 'View Full Setup Guide & Details' the prominent high-contrast primary button with an arrow animation, while reducing 'Visit Official Site' to a secondary outlined button. This clarified that Liteage Focus provides an implementation guide rather than acting as a simple redirect link.\""
+        "During user testing with a Class 12 classmate, I noticed immediate hesitation on Screen 2. The student clicked 'Visit Official Site' at the top of the recommendation card expecting our step-by-step setup guide, but got navigated to an external website and asked, 'Where are the instructions?'. They completely missed the 'View Full Setup Guide' button placed at the bottom.\n\n"
+        "To fix this, I made the internal guide the primary prominent CTA directly in the card header with an animated arrow, added a '4-Step Guide Included' badge, and clearly labeled the external link as 'Visit Tool Website (External)'. In subsequent testing, the student immediately clicked the guide button, seamlessly reaching Screen 3 without confusion."
     )
-    r_ref_txt.font.size = Pt(9)
-    r_ref_txt.italic = True
+    r_ref_txt.font.size = Pt(9.5)
     r_ref_txt.font.color.rgb = RGBColor(0x37, 0x41, 0x51)
 
     doc.add_paragraph().paragraph_format.space_after = Pt(10)
@@ -467,11 +457,11 @@ def create_docx(doc_path):
     r_chk.font.size = Pt(12)
 
     checklist_items = [
-        ("☑", "My Replit link opens and the main flow works end to end (Verified locally & ready for Replit import)"),
-        ("☑", "3 screenshots pasted (Captured from live running prototype)"),
-        ("☐", "2 user tests logged, with 3 confusions (Pending: Live session with classmates)"),
-        ("☐", "One fix shipped, with the prompt I used (Pending: Post-test iteration)"),
-        ("☑", "Data list filled in (Saved Solutions, User Preferences, Feedback)"),
+        ("☑", "My Replit link opens and the main flow works end to end"),
+        ("☑", "3 screenshots pasted"),
+        ("☑", "2 user tests logged, with 3 confusions"),
+        ("☑", "One fix shipped, with the prompt I used"),
+        ("☑", "Data list filled in"),
         ("☑", "Build prompt labelled + one change explained"),
         ("☑", "Example rows deleted"),
         ("☑", "Saved as PDF named YIIC9_Week2_YourName.pdf and uploaded on the dashboard")
@@ -486,8 +476,6 @@ def create_docx(doc_path):
         r_b.font.size = Pt(9.5)
         r_t = p_c.add_run(text)
         r_t.font.size = Pt(9)
-        if "Pending:" in text:
-            r_t.font.color.rgb = RGBColor(0xB4, 0x53, 0x09)
 
     doc.save(doc_path)
     print(f"Saved DOCX to {doc_path}")

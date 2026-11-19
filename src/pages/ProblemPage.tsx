@@ -12,7 +12,8 @@ import {
   Layers,
   ChevronRight,
   ShieldCheck,
-  Check
+  Check,
+  BookOpen
 } from 'lucide-react';
 
 interface ProblemPageProps {
@@ -66,7 +67,7 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
 
           <button
             onClick={(e) => onToggleSave(problem.id, e)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+            className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
               isSaved
                 ? 'bg-blue-50 text-blue-700 border-blue-200'
                 : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
@@ -88,7 +89,7 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
         {/* Common Symptoms breakdown */}
         <div className="mt-6 pt-5 border-t border-slate-100">
           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
-            Common Student Struggles (From Week 1 Field Interviews):
+            Common Student Struggles (From Field Research):
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
             {problem.commonSymptoms.map((symptom, idx) => (
@@ -101,7 +102,7 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
         </div>
       </div>
 
-      {/* Main Recommended Tool Section (Follows Week 1 Sketch) */}
+      {/* Main Recommended Tool Section */}
       <div className="relative">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
@@ -113,7 +114,7 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
               <p className="text-xs text-slate-500">Researched & tested to give students 1 verified solution</p>
             </div>
           </div>
-          <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+          <span className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
             <CheckCircle2 className="w-3.5 h-3.5" />
             Vetted for Student Budgets
           </span>
@@ -122,10 +123,10 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
         {/* Highlight Card */}
         <div className="bg-gradient-to-b from-white to-blue-50/20 border-2 border-blue-500/80 rounded-3xl p-6 sm:p-8 shadow-md">
           
-          {/* Top row */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
-            <div>
-              <div className="flex items-center gap-3">
+          {/* Top row with primary guide button immediately visible */}
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 pb-6 border-b border-slate-100">
+            <div className="space-y-1.5">
+              <div className="flex flex-wrap items-center gap-2.5">
                 <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
                   {solution.name}
                 </h3>
@@ -133,20 +134,34 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
                   <CheckCircle2 className="w-3 h-3" />
                   {solution.pricingStatus}
                 </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-blue-100 text-blue-800">
+                  <BookOpen className="w-3 h-3" />
+                  4-Step Guide Included
+                </span>
               </div>
-              <p className="text-sm sm:text-base text-slate-600 mt-1 max-w-2xl">
+              <p className="text-sm sm:text-base text-slate-600 max-w-2xl">
                 {solution.tagline}
               </p>
             </div>
 
-            <div className="shrink-0 flex items-center gap-2">
+            {/* Clear Button Pair: Primary Guide vs Secondary External Website */}
+            <div className="shrink-0 flex flex-wrap items-center gap-2.5">
+              <button
+                onClick={() => onNavigateToSolution(solution.id)}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2.5 rounded-xl text-xs sm:text-sm transition-all shadow-sm shadow-blue-500/20 flex items-center gap-2 group"
+              >
+                <span>View Step-by-Step Guide</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+
               <a
                 href={solution.verifiedOfficialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 hover:border-slate-400 transition-colors shadow-sm"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl text-xs font-semibold bg-white border border-slate-300 text-slate-600 hover:text-slate-900 hover:bg-slate-50 hover:border-slate-400 transition-colors shadow-sm"
+                title="Visit tool developer website in new tab"
               >
-                <span>Visit Official Site</span>
+                <span>Visit Tool Website (External)</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -197,17 +212,17 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
 
           </div>
 
-          {/* Primary Action to Screen 3 */}
+          {/* Primary Action to Screen 3 at bottom as well */}
           <div className="pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="text-xs text-slate-500">
-              Want step-by-step installation instructions and detailed device walkthroughs?
+              Ready to configure {solution.name}? Read our student-tailored instructions.
             </div>
 
             <button
               onClick={() => onNavigateToSolution(solution.id)}
               className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-sm shadow-blue-500/20 flex items-center justify-center gap-2 group"
             >
-              <span>View Full Setup Guide & Details</span>
+              <span>Open 4-Step Setup Guide & Details</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
