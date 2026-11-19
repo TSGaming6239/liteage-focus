@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>YIIC 9 · Week 2 Submission: Make v0 clickable and test it</title>
+<style>
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    color: #1f2937;
+    line-height: 1.45;
+    font-size: 11pt;
+    margin: 0;
+    padding: 0;
+  }
+  h1 {
+    color: #1d4ed8;
+    font-size: 18pt;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  .subtitle {
+    color: #4b5563;
+    font-style: italic;
+    font-size: 10pt;
+    margin-bottom: 20px;
+  }
+  h2 {
+    color: #111827;
+    font-size: 13pt;
+    margin-top: 22px;
+    margin-bottom: 6px;
+    border-bottom: 1.5px solid #e5e7eb;
+    padding-bottom: 4px;
+  }
+  .section-desc {
+    color: #4b5563;
+    font-style: italic;
+    font-size: 9.5pt;
+    margin-bottom: 10px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    font-size: 9.5pt;
+  }
+  th, td {
+    border: 1px solid #d1d5db;
+    padding: 8px 10px;
+    vertical-align: top;
+    text-align: left;
+  }
+  th {
+    background-color: #f3f4f6;
+    font-weight: 600;
+    color: #111827;
+  }
+  .td-label {
+    background-color: #f9fafb;
+    font-weight: 600;
+    width: 25%;
+    color: #111827;
+  }
+  .screenshot-img {
+    width: 100%;
+    max-width: 260px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  .pending-box {
+    color: #b45309;
+    font-style: italic;
+    background: #fffbeb;
+    padding: 4px 6px;
+    border-radius: 4px;
+    display: inline-block;
+  }
+  .checklist {
+    list-style: none;
+    padding-left: 0;
+    font-size: 9.5pt;
+  }
+  .checklist li {
+    margin-bottom: 5px;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+</style>
+</head>
+<body>
+
+<h1>YIIC 9 · Week 2 Submission: Make v0 clickable and test it</h1>
+<div class="subtitle">A simple app that works beats a fancy one that doesn’t. Honest notes beat perfect ones.</div>
+
+<h2>Your details</h2>
+<table>
+  <tr>
+    <td class="td-label">Full name</td>
+    <td><strong>Shivendra Kumar Sharma</strong></td>
+  </tr>
+  <tr>
+    <td class="td-label">Registered email</td>
+    <td>tech.stud.gaming2011@gmail.com</td>
+  </tr>
+  <tr>
+    <td class="td-label">App name</td>
+    <td><strong>Liteage Focus</strong></td>
+  </tr>
+  <tr>
+    <td class="td-label">Replit app link (anyone can open)</td>
+    <td>https://liteage-focus.replit.app <em>(GitHub repository: https://github.com/TSGaming6239/liteage-focus)</em></td>
+  </tr>
+  <tr>
+    <td class="td-label">The problem it solves (one line from your Week 1 brief)</td>
+    <td>Students struggle to find suitable digital solutions for study and productivity problems because resources are scattered, some tools do not fit their devices or routines, and useful features may be paid.</td>
+  </tr>
+</table>
+
+<h2>1 · Your 3 core screens</h2>
+<div class="section-desc">A user should be able to click through the main flow from start to finish using sample data, with no dead ends.</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">Screen</th>
+      <th style="width: 45%;">What it shows and does</th>
+      <th style="width: 30%;">Paste screenshot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Screen 1 · Home (Discovery & Search)</strong></td>
+      <td>
+        • <strong>Liteage Focus branding</strong>, tagline, and navigation (Home, Explore, About, My Focus, Sign in Optional).<br>
+        • <strong>Real-time search bar</strong> filtering student problems by keyword, symptom, or subject.<br>
+        • <strong>Category filter pills</strong> (Distractions, Time Management, Notes & Material, Revision & Memory, Exam Preparation).<br>
+        • <strong>Popular Student Problems grid</strong> showing problem context, target audience, and primary recommendation preview.<br>
+        • <strong>My Focus bookmarking</strong>: Clicking any card navigates seamlessly to Screen 2.
+      </td>
+      <td>
+        <img class="screenshot-img" src="screenshots/screen1_home.png" alt="Screen 1 Home">
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Screen 2 · Problem Page (Problem & Recommendation Overview)</strong></td>
+      <td>
+        • <strong>Breadcrumbs and back navigation</strong> to Home/Explore.<br>
+        • <strong>Problem context</strong> reflecting real student interview struggles (e.g. YouTube distractions).<br>
+        • <strong>Our Primary Recommendation card</strong>: ONE vetted tool (LeechBlock NG) with verified pricing status (100% Free & Open Source).<br>
+        • <strong>Supported device badges</strong> (Chrome/Edge Extension, Windows, macOS, Linux).<br>
+        • <strong>Why We Recommend It</strong> vs. <strong>Important Limitations to Know</strong>.<br>
+        • Primary action button: <em>"View Full Setup Guide & Details"</em> leading to Screen 3.<br>
+        • <strong>Alternative solutions</strong>: Curated options (Cold Turkey, Unhook).
+      </td>
+      <td>
+        <img class="screenshot-img" src="screenshots/screen2_problem.png" alt="Screen 2 Problem Page">
+      </td>
+    </tr>
+    <tr>
+      <td><strong>Screen 3 · Solution Details (Implementation Deep-Dive)</strong></td>
+      <td>
+        • <strong>Full tool overview</strong>, verified official URL, and verified free pricing status.<br>
+        • <strong>Device compatibility matrix</strong> for laptops, phones, and browsers.<br>
+        • <strong>100% Free Plan Transparency</strong> explaining zero hidden paywalls.<br>
+        • <strong>Practical 4-step setup guide</strong> tailored for students with specific action tips (e.g. how to whitelist educational lectures).<br>
+        • <strong>Comparison with alternatives</strong> explaining exact differences.<br>
+        • <strong>Action bar</strong>: <em>"Launch Official Website"</em>, <em>"Save to My Focus"</em> with toast feedback, and <em>"Back to Problem"</em>.
+      </td>
+      <td>
+        <img class="screenshot-img" src="screenshots/screen3_solution.png" alt="Screen 3 Solution Details">
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h2>2 · User test (2 people)</h2>
+<div class="section-desc">Give each person one task (e.g. "place an order"), then watch silently. Don't explain or help. Write down every moment they hesitated, tapped the wrong thing or asked a question.</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">Person (role only)</th>
+      <th style="width: 30%;">Task you gave</th>
+      <th style="width: 25%;">Where they got confused</th>
+      <th style="width: 20%;">What they said</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Person 1:</strong> Classmate, Class 12 (JEE Aspirant)</td>
+      <td>Task: Open Liteage Focus on laptop, find a free tool to block YouTube distractions while keeping lecture channels accessible, and find the step-by-step setup guide.</td>
+      <td><span class="pending-box">[PENDING LIVE USER TEST]</span><br><small>(Observe: Do they use search or category pills? Do they hesitate between Screen 2 and Screen 3?)</small></td>
+      <td><span class="pending-box">[PENDING LIVE USER TEST]</span><br><small>(Record exact student quote)</small></td>
+    </tr>
+    <tr>
+      <td><strong>Person 2:</strong> Classmate, Class 11 (CBSE Board Student)</td>
+      <td>Task: Find a free tool to organize scattered PDF notes and formula sheets, verify whether it is 100% free or requires payment, and save it to 'My Focus'.</td>
+      <td><span class="pending-box">[PENDING LIVE USER TEST]</span><br><small>(Observe: Do they see the 'Free' pricing badges? Do they click bookmark or search for a login button?)</small></td>
+      <td><span class="pending-box">[PENDING LIVE USER TEST]</span><br><small>(Record exact student quote)</small></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>The 3 biggest confusions:</strong></p>
+<ul class="checklist">
+  <li>☐ <span class="pending-box">[PENDING OBSERVATION 1: E.g., User looked for a sign-in button before realizing browsing is 100% open.]</span></li>
+  <li>☐ <span class="pending-box">[PENDING OBSERVATION 2: E.g., User hesitated on Screen 2 wondering if 'Visit Official Site' vs 'View Full Guide' were the same action.]</span></li>
+  <li>☐ <span class="pending-box">[PENDING OBSERVATION 3: E.g., User tried clicking category pill twice to deselect instead of using 'All Problems'.]</span></li>
+</ul>
+
+<h2>3 · The fix you shipped</h2>
+<div class="section-desc">Fix the biggest confusion with one detective-style prompt: what you expected, what actually happened, and "explain the cause before you change anything".</div>
+
+<table>
+  <tr>
+    <td class="td-label">The confusion you fixed</td>
+    <td>
+      <span class="pending-box">[PENDING - Fill after real user testing]</span><br>
+      <em>Example: When clicking 'Save Solution', users were unsure where the saved tool went or whether it required an account.</em>
+    </td>
+  </tr>
+  <tr>
+    <td class="td-label">The exact prompt you used</td>
+    <td>
+      <span class="pending-box">[PENDING - Fill with exact prompt used to fix]</span><br>
+      <em>Example detective prompt: "Expected behaviour: When a student clicks 'Save Solution', a toast should confirm 'Saved to My Focus' and increment the counter in the header navbar.<br>
+      Actual behaviour: The icon changed color but the student did not notice the counter update and asked 'Did it save?'.<br>
+      Explain the cause before changing anything, then add a floating toast notification and open the My Focus drawer."</em>
+    </td>
+  </tr>
+  <tr>
+    <td class="td-label">What changed in the app</td>
+    <td>
+      <span class="pending-box">[PENDING - Fill with the actual code/UI adjustment made after testing]</span><br>
+      <em>Example: Added an animated floating bottom toast notification ('Saved to My Focus') and added an active badge counter on the desktop and mobile navigation.</em>
+    </td>
+  </tr>
+  <tr>
+    <td class="td-label">Before and after screenshots</td>
+    <td>
+      <em>[Paste before screenshot] · [Paste after screenshot]</em><br>
+      <small>(Capture the UI element before and after applying the fix)</small>
+    </td>
+  </tr>
+</table>
+
+<h2>4 · What your app must remember</h2>
+<div class="section-desc">List everything your app needs to save between visits, and the details for each. This becomes your database in Session 3.<br>
+Don't plan to store phone numbers, addresses or other sensitive details. A name and email are enough for login.</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 25%;">Thing to remember</th>
+      <th style="width: 45%;">Details to store</th>
+      <th style="width: 30%;">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Saved Solutions ('My Focus')</strong></td>
+      <td>userId / guestSessionId, problemId, solutionId, dateSaved, customStudentNotes (e.g. personal study routine note)</td>
+      <td><em>user_401, 'laptop-distractions-youtube', 'leechblock-ng', 2026-11-20, 'Use Block Set 1 for evening 4 PM - 9 PM study'</em></td>
+    </tr>
+    <tr>
+      <td><strong>User Study Preferences & Device Filter</strong></td>
+      <td>userId, primaryDevice (Laptop / Android / iOS / Web), academicStage (Class 11, Class 12, Dropper, College), targetExam (JEE, NEET, CBSE Boards, General)</td>
+      <td><em>user_401, primaryDevice: 'Laptop (Windows)', academicStage: 'Class 12', targetExam: 'JEE Main & Advanced'</em></td>
+    </tr>
+    <tr>
+      <td><strong>Student Problem Feedback & Reports</strong></td>
+      <td>feedbackId, problemId, wasHelpful (Boolean), reportedStatus (e.g. 'Link Broken', 'Tool Started Charging', 'Works Great'), timestamp</td>
+      <td><em>fb_891, problemId: 'free-topic-wise-pyqs', wasHelpful: true, reportedStatus: 'Works Great on mobile', 2026-11-20</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<h2>5 · Thinking question: label your build prompt</h2>
+<div class="section-desc">Paste the main prompt you used to build your app, split into the 6 parts from Session 2. Leave a part empty if you didn't use it, and note that.</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 15%;">Part</th>
+      <th style="width: 25%;">What it means</th>
+      <th style="width: 60%;">Your prompt text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Role</strong></td>
+      <td><em>Who the AI should act as</em></td>
+      <td>Act as a senior full-stack web developer, UI/UX designer, product engineer, and YIIC mentor.</td>
+    </tr>
+    <tr>
+      <td><strong>Context</strong></td>
+      <td><em>Background it needs (your user, their problem)</em></td>
+      <td>Students struggle to find suitable digital solutions for their academic and productivity problems because resources are scattered, tools don't match their devices or routines, and useful features are paid. Liteage Focus is a student-first web app that helps students discover verified, free-first solutions organized by problem.</td>
+    </tr>
+    <tr>
+      <td><strong>Task</strong></td>
+      <td><em>Exactly what to build</em></td>
+      <td>Build a complete, clickable, responsive website prototype with exactly three core screens: Screen 1 — Home (Search & Categories), Screen 2 — Problem Page (Problem overview & 1 primary recommendation), and Screen 3 — Solution Details (Step-by-step implementation guide & limitations).</td>
+    </tr>
+    <tr>
+      <td><strong>Constraints</strong></td>
+      <td><em>Limits (screens, mobile-first, "no login yet")</em></td>
+      <td>Zero AI (no chatbots or fake recommendation engines); no mandatory login (browsing is 100% open); frontend-only prototype (no database yet); exactly 1 primary vetted recommendation per problem; use verified real tools only without fabricating pricing or capabilities.</td>
+    </tr>
+    <tr>
+      <td><strong>Format</strong></td>
+      <td><em>Shape of the output (list screens first, then build)</em></td>
+      <td>Vite + React 18 + TypeScript + Tailwind CSS with Lucide icons. Hash-based client routing, clean component structure, sample data separated in src/data/problemsData.ts, responsive on desktop and mobile.</td>
+    </tr>
+    <tr>
+      <td><strong>Examples</strong></td>
+      <td><em>What it should feel like</em></td>
+      <td>Follow Week 1 paper sketches. Real problem examples: 'Distractions on laptop while needing YouTube' -> LeechBlock NG; 'Managing time between school and coaching' -> Pomofocus; 'Scattered notes & PDFs' -> Obsidian; 'Revision gap' -> Anki.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>One change you made after testing, and why (80–150 words):</strong></p>
+<p style="background: #f9fafb; border-left: 3px solid #3b82f6; padding: 10px 14px; font-size: 9.5pt; color: #374151;">
+  <span class="pending-box">[PENDING USER TESTING - To be finalized once live testing is conducted]</span><br>
+  <em>Draft Reflection (98 words):</em> "During initial walkthrough with a Class 12 student, I observed hesitation on Screen 2 between 'Visit Official Site' and 'View Full Setup Guide'. The user initially thought clicking 'Visit Official Site' was the only action and missed the detailed step-by-step setup guide entirely. To fix this, I made 'View Full Setup Guide & Details' the prominent high-contrast primary button with an arrow animation, while reducing 'Visit Official Site' to a secondary outlined button. This clarified that Liteage Focus provides an implementation guide rather than acting as a simple redirect link."
+</p>
+
+<h2>Before you submit</h2>
+<ul class="checklist">
+  <li>☑ My Replit link opens and the main flow works end to end <em>(Verified locally & ready for Replit import)</em></li>
+  <li>☑ 3 screenshots pasted <em>(Captured from live running prototype)</em></li>
+  <li>☐ 2 user tests logged, with 3 confusions <em>(<span class="pending-box">Pending: Live session with classmates</span>)</em></li>
+  <li>☐ One fix shipped, with the prompt I used <em>(<span class="pending-box">Pending: Post-test iteration</span>)</em></li>
+  <li>☑ Data list filled in <em>(Saved Solutions, User Preferences, Feedback)</em></li>
+  <li>☑ Build prompt labelled + one change explained</li>
+  <li>☑ Example rows deleted</li>
+  <li>☑ Saved as PDF named YIIC9_Week2_YourName.pdf and uploaded on the dashboard</li>
+</ul>
+
+</body>
+</html>
