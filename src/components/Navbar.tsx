@@ -4,6 +4,7 @@ import { Target, Bookmark, Info, Menu, X, Compass, Home, UserCheck } from 'lucid
 interface NavbarProps {
   currentScreen: 'home' | 'problem' | 'solution';
   onNavigateHome: () => void;
+  onNavigateExplore: () => void;
   savedCount: number;
   onOpenSaved: () => void;
   onOpenAbout: () => void;
@@ -12,6 +13,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({
   currentScreen,
   onNavigateHome,
+  onNavigateExplore,
   savedCount,
   onOpenSaved,
   onOpenAbout,
@@ -58,12 +60,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               </button>
 
               <button
-                onClick={onNavigateHome}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  currentScreen !== 'home'
-                    ? 'text-blue-600 bg-blue-50/80'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                }`}
+                onClick={onNavigateExplore}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
               >
                 <Compass className="w-4 h-4" />
                 Explore Problems
@@ -138,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               Home
             </button>
             <button
-              onClick={() => { onNavigateHome(); setMobileMenuOpen(false); }}
+              onClick={() => { onNavigateExplore(); setMobileMenuOpen(false); }}
               className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-100"
             >
               <Compass className="w-4 h-4 text-blue-600" />

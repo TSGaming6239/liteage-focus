@@ -135,7 +135,7 @@ export const HomePage: React.FC<HomePageProps> = ({
       )}
 
       {/* Browse by Category Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="explore-problems" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div className="flex items-center justify-between mb-4">
           <div>
             <h2 className="text-lg sm:text-xl font-bold text-slate-900 flex items-center gap-2">

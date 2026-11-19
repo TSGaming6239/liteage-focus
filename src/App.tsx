@@ -46,6 +46,15 @@ export function App() {
       const hash = window.location.hash;
       if (!hash || hash === '#/' || hash === '#') {
         setCurrentScreen('home');
+        window.scrollTo(0, 0);
+      } else if (hash === '#/explore') {
+        setCurrentScreen('home');
+        setTimeout(() => {
+          const el = document.getElementById('explore-problems');
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
       } else if (hash.startsWith('#/problem/')) {
         const id = hash.replace('#/problem/', '');
         const p = PROBLEMS.find((item) => item.id === id);
@@ -56,6 +65,7 @@ export function App() {
         } else {
           setCurrentScreen('home');
         }
+        window.scrollTo(0, 0);
       } else if (hash.startsWith('#/solution/')) {
         const id = hash.replace('#/solution/', '');
         const s = SOLUTIONS[id];
@@ -68,8 +78,8 @@ export function App() {
         } else {
           setCurrentScreen('home');
         }
+        window.scrollTo(0, 0);
       }
-      window.scrollTo(0, 0);
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -118,6 +128,17 @@ export function App() {
     window.scrollTo(0, 0);
   };
 
+  const handleNavigateExplore = () => {
+    window.location.hash = '#/explore';
+    setCurrentScreen('home');
+    setTimeout(() => {
+      const el = document.getElementById('explore-problems');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 50);
+  };
+
   const handleToggleSave = (problemId: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
 
@@ -143,6 +164,7 @@ export function App() {
       <Navbar
         currentScreen={currentScreen}
         onNavigateHome={handleNavigateHome}
+        onNavigateExplore={handleNavigateExplore}
         savedCount={savedProblemIds.length}
         onOpenSaved={() => setIsSavedModalOpen(true)}
         onOpenAbout={() => setIsAboutModalOpen(true)}
@@ -165,6 +187,7 @@ export function App() {
             problem={currentProblem}
             solution={currentSolution}
             onNavigateHome={handleNavigateHome}
+            onNavigateExplore={handleNavigateExplore}
             onNavigateToSolution={handleNavigateToSolution}
             isSaved={savedProblemIds.includes(currentProblem.id)}
             onToggleSave={handleToggleSave}

@@ -20,6 +20,7 @@ interface ProblemPageProps {
   problem: Problem;
   solution: Solution;
   onNavigateHome: () => void;
+  onNavigateExplore?: () => void;
   onNavigateToSolution: (solutionId: string) => void;
   isSaved: boolean;
   onToggleSave: (problemId: string, e: React.MouseEvent) => void;
@@ -29,6 +30,7 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
   problem,
   solution,
   onNavigateHome,
+  onNavigateExplore,
   onNavigateToSolution,
   isSaved,
   onToggleSave,
@@ -39,7 +41,7 @@ export const ProblemPage: React.FC<ProblemPageProps> = ({
       {/* Breadcrumb & Back navigation */}
       <div className="flex items-center justify-between">
         <button
-          onClick={onNavigateHome}
+          onClick={onNavigateExplore || onNavigateHome}
           className="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-white px-3 py-1.5 rounded-lg border border-transparent hover:border-slate-200 transition-all"
         >
           <ArrowLeft className="w-4 h-4" />
