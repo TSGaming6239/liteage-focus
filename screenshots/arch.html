@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    margin: 0;
+    padding: 24px;
+    background: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    background: #f8fafc;
+  }
+  .title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 24px;
+  }
+  .title span {
+    color: #2563eb;
+  }
+  .grid {
+    display: flex;
+    gap: 16px;
+    align-items: stretch;
+  }
+  .col {
+    flex: 1;
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+  }
+  .col-header {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    border-bottom: 2px solid;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .c1 .col-header { color: #2563eb; border-color: #3b82f6; }
+  .c2 .col-header { color: #059669; border-color: #10b981; }
+  .c3 .col-header { color: #7c3aed; border-color: #8b5cf6; }
+  .c4 .col-header { color: #d97706; border-color: #f59e0b; }
+
+  .card {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    font-size: 12px;
+  }
+  .card-title {
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+  .card-desc {
+    color: #64748b;
+    font-size: 11px;
+    line-height: 1.35;
+  }
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-weight: bold;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="title">Liteage <span>Focus</span> — Application Architecture</div>
+  
+  <div class="grid">
+    
+    <!-- Column 1: Core Screens -->
+    <div class="col c1">
+      <div class="col-header">1. Presentation (3 Screens)</div>
+      
+      <div class="card">
+        <div class="card-title">Screen 1 · Discovery</div>
+        <div class="card-desc">Real-time search, 5 category filter pills, problem cards & bookmarks.</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-title">Screen 2 · Problem Overview</div>
+        <div class="card-desc">Problem context, 1 primary recommendation, device badges, limitations.</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-title">Screen 3 · Solution Details</div>
+        <div class="card-desc">4-step practical guide, 100% free plan details, alternatives comparison.</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">➔</div>
+
+    <!-- Column 2: Client State Engine -->
+    <div class="col c2">
+      <div class="col-header">2. Client State & Storage</div>
+      
+      <div class="card">
+        <div class="card-title">My Focus (Saved Items)</div>
+        <div class="card-desc">Persistent LocalStorage for saved solutions across visits without mandatory login.</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-title">Study Preferences</div>
+        <div class="card-desc">Device context (Laptop/Phone) & target exam stream (JEE/CBSE).</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-title">Hash Router (History)</div>
+        <div class="card-desc">Seamless browser back/forward and deep-linking (#/, #/problem, #/solution).</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">➔</div>
+
+    <!-- Column 3: Matching Engine -->
+    <div class="col c3">
+      <div class="col-header">3. Logic & Decision Engine</div>
+      
+      <div class="card">
+        <div class="card-title">Deterministic Matcher</div>
+        <div class="card-desc">Multi-tag symptom search & zero-hallucination rule-based filtering.</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-title">Verified Knowledge Graph</div>
+        <div class="card-desc">Structured student dataset: verified links, free pricing facts, setup tips.</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-title">1 Vetted Pick Rule</div>
+        <div class="card-desc">Eliminates decision fatigue with 1 primary tool + 2 transparent alternatives.</div>
+      </div>
+    </div>
+
+    <!-- Arrow -->
+    <div class="arrow">➔</div>
+
+    <!-- Column 4: CI/CD & CDN -->
+    <div class="col c4">
+      <div class="col-header">4. Deployment & CDN</div>
+      
+      <div class="card">
+        <div class="card-title">GitHub Actions CI/CD</div>
+        <div class="card-desc">Automated build pipeline triggered on every commit to main branch.</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-title">GitHub Pages CDN</div>
+        <div class="card-desc">Fast, 100% free global hosting with HTTPS: tsgaming6239.github.io.</div>
+      </div>
+      
+      <div class="card">
+        <div class="card-title">Vite 5 Static Build</div>
+        <div class="card-desc">Tree-shaken, optimized single-page bundle with zero backend downtime.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
